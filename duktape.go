@@ -24,7 +24,7 @@ import (
 	"unsafe"
 )
 
-var reFuncName = regexp.MustCompile("^[a-z_][a-z0-9_]*([A-Z_][a-z0-9_]*)*$")
+var reFuncName = regexp.MustCompile("^[a-zA-Z_][a-zA-Zf0-9_]*([A-Z_][a-z0-9_]*)*$")
 
 const (
 	goFunctionPtrProp = "\xff" + "goFunctionPtrProp"
