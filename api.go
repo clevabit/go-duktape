@@ -168,6 +168,7 @@ static void _duk_push_external_buffer(duk_context *ctx) {
 import "C"
 import (
 	"fmt"
+	"reflect"
 	"unsafe"
 )
 
@@ -448,6 +449,15 @@ func (d *Context) GetBoolean(index int) bool {
 func (d *Context) GetBuffer(index int) (rawPtr unsafe.Pointer, outSize uint) {
 	rawPtr = C.duk_get_buffer(d.duk_context, C.duk_idx_t(index), (*C.duk_size_t)(unsafe.Pointer(&outSize)))
 	return rawPtr, outSize
+}
+
+func (d *Context) GetGoBuffer(index int) []byte {
+	rawPtr, outSize := d.GetBuffer(index)
+	buf := *(*[]byte)(unsafe.Pointer(&reflect.SliceHeader{Cap: int(outSize), Len: int(outSize), Data: uintptr(rawPtr)}))
+
+	result := make([]byte, outSize)
+	copy(result, buf)
+	return result
 }
 
 // See: http://duktape.org/api.html#duk_get_context
