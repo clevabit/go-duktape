@@ -127,10 +127,17 @@ func (d *Context) PushGlobalGoFunction(name string, fn func(*Context) int) (int,
 // PushGoFunction push the given function into duktape stack, returns non-negative
 // index (relative to stack bottom) of the pushed function
 func (d *Context) PushGoFunction(fn func(*Context) int) int {
+	return d.PushGoFunctionArgs(fn, int(C.DUK_VARARGS))
+}
+
+// PushGoFunctionArgs push the given function with a fixed number of arguments
+// into duktape stack, returns non-negative index (relative to stack bottom)
+// of the pushed function
+func (d *Context) PushGoFunctionArgs(fn func(*Context) int, nargs int) int {
 	funPtr := d.fnIndex.add(fn)
 	ctxPtr := contexts.add(d)
 
-	idx := d.PushCFunction((*[0]byte)(C.goFunctionCall), C.DUK_VARARGS)
+	idx := d.PushCFunction((*[0]byte)(C.goFunctionCall), int64(nargs))
 	d.PushCFunction((*[0]byte)(C.goFinalizeCall), 1)
 	d.PushPointer(funPtr)
 	d.PutPropString(-2, goFunctionPtrProp)
