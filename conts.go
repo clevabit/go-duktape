@@ -9,6 +9,11 @@ package duktape
 import "C"
 
 const (
+	DUK_INT_MAX = int64(C.INT_MAX)
+	DUK_INT_MIN = int64((-C.INT_MAX) + 1)
+)
+
+const (
 	CompileEval       uint = C.DUK_COMPILE_EVAL
 	CompileFunction   uint = C.DUK_COMPILE_FUNCTION
 	CompileStrict     uint = C.DUK_COMPILE_STRICT
