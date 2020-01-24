@@ -1576,6 +1576,17 @@ func (d *Context) ConfigBuffer(bufferIdx int, buffer []byte) {
 	)
 }
 
+// See: http://duktape.org/api.html#duk_suspend
+func (d *Context) Suspend() *ThreadState {
+	threadState := &C.duk_thread_state{}
+	//threadState := *C.duk_thread_state(C.malloc(C.sizeof_duk_thread_state))
+	C.duk_suspend(d.duk_context, threadState)
+	return &ThreadState{
+		threadState: threadState,
+		context:     d.context,
+	}
+}
+
 /**
  * Unimplemented.
  *

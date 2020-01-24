@@ -48,6 +48,17 @@ type context struct {
 	timerIndex  *timerIndex
 }
 
+type ThreadState struct {
+	context 	*context
+	threadState *C.duk_thread_state
+}
+
+// See: http://duktape.org/api.html#duk_resume
+func (ts *ThreadState) Resume() {
+	 C.duk_resume(ts.context.duk_context, ts.threadState)
+	 //C.free(ts.threadState)
+}
+
 // New returns plain initialized duktape context object
 // See: http://duktape.org/api.html#duk_create_heap_default
 func New() *Context {
