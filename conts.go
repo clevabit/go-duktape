@@ -116,13 +116,32 @@ const (
 	BufObjArrayBuffer       int = C.DUK_BUFOBJ_ARRAYBUFFER
 	BufObjNodejsBuffer      int = C.DUK_BUFOBJ_NODEJS_BUFFER
 	BufObjDataView          int = C.DUK_BUFOBJ_DATAVIEW
-	BufobjInt8Array         int = C.DUK_BUFOBJ_INT8ARRAY
-	BufobjUint8Array        int = C.DUK_BUFOBJ_UINT8ARRAY
-	BufobjUint8ClampedArray int = C.DUK_BUFOBJ_UINT8CLAMPEDARRAY
+	BufObjInt8Array         int = C.DUK_BUFOBJ_INT8ARRAY
+	BufObjUint8Array        int = C.DUK_BUFOBJ_UINT8ARRAY
+	BufObjUint8ClampedArray int = C.DUK_BUFOBJ_UINT8CLAMPEDARRAY
 	BufObjInt16Array        int = C.DUK_BUFOBJ_INT16ARRAY
 	BufObjUint16Array       int = C.DUK_BUFOBJ_UINT16ARRAY
 	BufObjInt32Array        int = C.DUK_BUFOBJ_INT32ARRAY
 	BufObjUint32Array       int = C.DUK_BUFOBJ_UINT32ARRAY
 	BufObjFloat32Array      int = C.DUK_BUFOBJ_FLOAT32ARRAY
 	BufObjFloat64Array      int = C.DUK_BUFOBJ_FLOAT64ARRAY
+)
+
+const (
+	DefPropWritable          uint = C.DUK_DEFPROP_WRITABLE
+	DefPropEnumerable        uint = C.DUK_DEFPROP_ENUMERABLE
+	DefPropConfigurable      uint = C.DUK_DEFPROP_CONFIGURABLE
+	DefPropHaveWritable      uint = C.DUK_DEFPROP_HAVE_WRITABLE
+	DefPropHaveEnumerable    uint = C.DUK_DEFPROP_HAVE_ENUMERABLE
+	DefPropHaveConfigurable  uint = C.DUK_DEFPROP_HAVE_CONFIGURABLE
+	DefPropHaveValue         uint = C.DUK_DEFPROP_HAVE_VALUE
+	DefPropHaveGetter        uint = C.DUK_DEFPROP_HAVE_GETTER
+	DefPropHaveSetter        uint = C.DUK_DEFPROP_HAVE_SETTER
+	DefPropForce             uint = C.DUK_DEFPROP_FORCE
+	DefPropSetWritable       uint = C.DUK_DEFPROP_SET_WRITABLE
+	DefPropClearWritable     uint = C.DUK_DEFPROP_CLEAR_WRITABLE
+	DefPropSetEnumerable     uint = C.DUK_DEFPROP_SET_ENUMERABLE
+	DefPropClearEnumerable   uint = C.DUK_DEFPROP_CLEAR_ENUMERABLE
+	DefPropSetConfigurable   uint = C.DUK_DEFPROP_SET_CONFIGURABLE
+	DefPropClearConfigurable uint = C.DUK_DEFPROP_CLEAR_CONFIGURABLE
 )
